@@ -115,12 +115,10 @@
 				BE33E3D3282EDFB700768E1C /* Schema.json */,
 				BE33E3D8282EE26200768E1C /* API.swift */,
 				BE33E3DC282FA29C00768E1C /* NetWork */,
-				BE33E39E282EDCA300768E1C /* AppDelegate.swift */,
-				BE33E3A0282EDCA300768E1C /* SceneDelegate.swift */,
-				BE33E3A2282EDCA300768E1C /* ViewController.swift */,
-				BE33E3A4282EDCA300768E1C /* Main.storyboard */,
+				BE33E3E2282FDC8800768E1C /* MainApp */,
+				BE33E3E5282FDD2400768E1C /* ViewControllers */,
+				BE33E3E4282FDD0700768E1C /* StoryBoards */,
 				BE33E3A7282EDCA400768E1C /* Assets.xcassets */,
-				BE33E3A9282EDCA400768E1C /* LaunchScreen.storyboard */,
 				BE33E3AC282EDCA400768E1C /* Info.plist */,
 			);
 			path = SpaceX;
@@ -149,6 +147,32 @@
 				BE33E3DA282F946E00768E1C /* Network.swift */,
 			);
 			path = NetWork;
+			sourceTree = "<group>";
+		};
+		BE33E3E2282FDC8800768E1C /* MainApp */ = {
+			isa = PBXGroup;
+			children = (
+				BE33E3A0282EDCA300768E1C /* SceneDelegate.swift */,
+				BE33E39E282EDCA300768E1C /* AppDelegate.swift */,
+			);
+			path = MainApp;
+			sourceTree = "<group>";
+		};
+		BE33E3E4282FDD0700768E1C /* StoryBoards */ = {
+			isa = PBXGroup;
+			children = (
+				BE33E3A9282EDCA400768E1C /* LaunchScreen.storyboard */,
+				BE33E3A4282EDCA300768E1C /* Main.storyboard */,
+			);
+			path = StoryBoards;
+			sourceTree = "<group>";
+		};
+		BE33E3E5282FDD2400768E1C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BE33E3A2282EDCA300768E1C /* ViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +270,7 @@
 			mainGroup = BE33E392282EDCA300768E1C;
 			packageReferences = (
 				BE33E3CE282EDCD400768E1C /* XCRemoteSwiftPackageReference "apollo-ios" */,
+				BE33E3E1282FDC6A00768E1C /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = BE33E39C282EDCA300768E1C /* Products */;
 			projectDirPath = "";
@@ -664,6 +689,14 @@
 		BE33E3CE282EDCD400768E1C /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/apollographql/apollo-ios";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		BE33E3E1282FDC6A00768E1C /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
 			requirement = {
 				branch = main;
 				kind = branch;
