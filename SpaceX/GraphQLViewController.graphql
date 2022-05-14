@@ -1,0 +1,15 @@
+query SpaceXHistory {
+  histories {
+    id
+    title
+    details
+    event_date_unix
+  }
+}
+
+subscription SpaceXUsers {
+  users {
+    id
+    name
+  }
+}
