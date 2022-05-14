@@ -111,9 +111,10 @@
 		BE33E39D282EDCA300768E1C /* SpaceX */ = {
 			isa = PBXGroup;
 			children = (
+				BE33E3D6282EE1A200768E1C /* GraphQLViewController.graphql */,
+				BE33E3D3282EDFB700768E1C /* Schema.json */,
 				BE33E3D8282EE26200768E1C /* API.swift */,
 				BE33E3DC282FA29C00768E1C /* NetWork */,
-				BE33E3D3282EDFB700768E1C /* Schema.json */,
 				BE33E39E282EDCA300768E1C /* AppDelegate.swift */,
 				BE33E3A0282EDCA300768E1C /* SceneDelegate.swift */,
 				BE33E3A2282EDCA300768E1C /* ViewController.swift */,
@@ -121,7 +122,6 @@
 				BE33E3A7282EDCA400768E1C /* Assets.xcassets */,
 				BE33E3A9282EDCA400768E1C /* LaunchScreen.storyboard */,
 				BE33E3AC282EDCA400768E1C /* Info.plist */,
-				BE33E3D6282EE1A200768E1C /* GraphQLViewController.graphql */,
 			);
 			path = SpaceX;
 			sourceTree = "<group>";

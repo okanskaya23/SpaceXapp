@@ -7,9 +7,3 @@ query SpaceXHistory {
   }
 }
 
-subscription SpaceXUsers {
-  users {
-    id
-    name
-  }
-}
