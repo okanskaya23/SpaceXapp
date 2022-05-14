@@ -1,9 +1,11 @@
-query SpaceXHistory {
-  histories {
-    id
-    title
+query SpaceXHistory($offset: Int) {
+  launches(order: "desc", sort: "launch_date_utc", limit: 20, offset: $offset) {
+    mission_name
+    launch_year
+    links {
+      mission_patch
+    }
     details
-    event_date_unix
   }
 }
 
