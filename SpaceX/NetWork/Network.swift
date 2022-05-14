@@ -10,7 +10,8 @@ import Apollo
 import ApolloWebSocket
 
 class Network {
-  static let shared = Network()
-
-  private(set) lazy var apollo = ApolloClient(url: URL(string: "https://api.spacex.land/graphql/")!)
+    
+    static let shared = Network()
+    private(set) lazy var apollo = ApolloClient(url: URL(string: "https://api.spacex.land/graphql/")!)
+    static let paginationLimit = 20
 }
