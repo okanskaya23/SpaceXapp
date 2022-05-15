@@ -10,7 +10,7 @@ import Apollo
 
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
-
+    
     @IBOutlet var tableView: UITableView!
     private var viewModel = ViewModel()
     
@@ -22,10 +22,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         self.viewModel.loadLaunches(){
             self.tableView.reloadData()
         }
-
+        
         
     }
 }
+
+//MARK: TableView
 extension ViewController{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.data.count
@@ -48,23 +50,24 @@ extension ViewController{
         vc.detailDescription = UITextView()
         self.present(vc, animated: true, completion: nil)
         vc.detailDescription.text = self.viewModel.data[indexPath.row].details
-
+        
         
     }
+}
+//MARK: pagination
+extension ViewController{
+    //load new data in the end of the tableView
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pos = scrollView.contentOffset.y
         if viewModel.isThereNewDataOnServer && !viewModel.hasLoaded{
-             if pos > tableView.contentSize.height-50 - scrollView.frame.size.height{
-                 self.viewModel.pagination += Network.paginationLimit
-                 self.viewModel.loadLaunches(){
-                     self.tableView.reloadData()
-                 }
-                 print("hey")
-                 viewModel.hasLoaded = true
-                 
-             }
+            if pos > tableView.contentSize.height-50 - scrollView.frame.size.height{
+                self.viewModel.updateCurserPosition()
+                self.viewModel.loadLaunches(){
+                    self.tableView.reloadData()
+                }
+                print("hey")
+                viewModel.hasLoaded = true
+            }
         }
-        
     }
-
 }
