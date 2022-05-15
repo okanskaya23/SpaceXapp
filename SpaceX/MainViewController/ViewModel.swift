@@ -10,9 +10,10 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
+
 class ViewModel{
     
-    var data = BehaviorSubject(value: [SpaceXHistoryQuery.Data.Launch]())
+    var data = BehaviorSubject(value: [Launches]())
 
     var paginationCursor = 0
     var isThereNewDataOnServer = true

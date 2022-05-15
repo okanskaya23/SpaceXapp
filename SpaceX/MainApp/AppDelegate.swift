@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Network.shared.apollo.fetch(query: SpaceXHistoryQuery()) { result in
           switch result {
           case .success(let graphQLResult):
-            print("Success! Result: \(graphQLResult)")
+              debugPrint("Success! graphQL request:\(graphQLResult)")
           case .failure(let error):
-            print("Failure! Error: \(error)")
+              debugPrint("Failure! Error: \(error)")
           }
         }
         return true

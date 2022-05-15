@@ -16,6 +16,7 @@ class ViewController: UIViewController ,UITableViewDelegate{
     
     private var viewModel = ViewModel()
     private var bag = DisposeBag()
+    
     lazy var tableView : UITableView = {
         let tv = UITableView(frame: self.view.frame, style: .insetGrouped)
         tv.translatesAutoresizingMaskIntoConstraints = false
@@ -23,16 +24,39 @@ class ViewController: UIViewController ,UITableViewDelegate{
         return tv
     }()
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
         self.bindTableView()
         self.viewModel.loadLaunches()
-        
-        
+    }
+    
+}
+
+
+//MARK: TableView binding
+extension ViewController{
+    func bindTableView() {
+        tableView.rx.setDelegate(self).disposed(by: bag)
+
+        //MARK: Data Binding
+        viewModel.data
+            .bind(to: tableView.rx.items(cellIdentifier: CustomRocketCell.cellIdentifier,cellType: CustomRocketCell.self)){  row, data, cell in
+                cell.title?.text = data.missionName ?? ""
+            }.disposed(by: bag)
+
+        //MARK: Didselect
+        tableView.rx.itemSelected.subscribe(onNext: { indexPath in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+            guard let model = try? self.viewModel.data.value() else { return }
+            let vc = DetailViewController(viewModel: model[indexPath.row])
+            vc.modalPresentationStyle = .popover
+            self.present(vc, animated: true, completion: nil)
+
+        }).disposed(by: bag)
     }
 }
+
 
 //MARK: Pagination Signal
 extension ViewController{
@@ -50,31 +74,4 @@ extension ViewController{
     }
 }
 
-//MARK: TableView binding
-extension ViewController{
-    func bindTableView() {
-        tableView.rx.setDelegate(self).disposed(by: bag)
-
-
-        viewModel.data
-            .bind(to: tableView.rx.items(cellIdentifier: CustomRocketCell.cellIdentifier,cellType: CustomRocketCell.self)){  row, data, cell in
-                cell.title?.text = data.missionName
-            }.disposed(by: bag)
-
-        
-        
-        tableView.rx.itemSelected.subscribe(onNext: { indexPath in
-            self.tableView.deselectRow(at: indexPath, animated: true)
-            let vc = DetailViewController()
-            vc.modalPresentationStyle = .popover
-            vc.detailDescription = UITextView()
-            self.present(vc, animated: true, completion: nil)
-            guard let model = try? self.viewModel.data.value() else { return }
-            vc.detailDescription.text = model[indexPath.row].details == nil ? "Empty Descripton" : model[indexPath.row].details
-        }).disposed(by: bag)
-
-        
-        
-    }
-}
 
