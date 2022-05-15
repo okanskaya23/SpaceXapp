@@ -13,14 +13,13 @@ import RxDataSources
 
 
 class ViewModel{
-    var data = [SpaceXHistoryQuery.Data.Launch]()
-    var dataRx = BehaviorSubject(value: [SectionModel(model: "", items: [SpaceXHistoryQuery.Data.Launch]())])
+    var data = BehaviorSubject(value: [SpaceXHistoryQuery.Data.Launch]())
 
     var paginationCursor = 0
     var isThereNewDataOnServer = true
     var hasLoaded = false
     
-    func loadLaunches(completion: @escaping () -> ()) {
+    func loadLaunches() {
         Network.shared.apollo
             .fetch(query: SpaceXHistoryQuery(offset: self.paginationCursor)) { [weak self] result in
                 
@@ -29,18 +28,21 @@ class ViewModel{
                 }
                 
                 defer {
-                    //Reload TableView with new data
-                    completion()
+                    //completion()
                 }
                 
                 switch result {
                 case .success(let graphQLResult):
                     if let launchConnection = graphQLResult.data?.launches {
-                        self.data.append(contentsOf: launchConnection.compactMap { $0 })
-                        let a = SectionModel(model: "Second", items: launchConnection.compactMap { $0 })
-                        self.dataRx.on(.next([a]))
-                        if self.data.count < self.paginationCursor{
-                            self.isThereNewDataOnServer = false
+                        do {
+                            try self.data.onNext(self.data.value() + launchConnection.compactMap { $0 })
+                            let count = try self.data.value().count
+                            if count < self.paginationCursor{
+                                self.isThereNewDataOnServer = false
+                            }
+
+                        } catch {
+                            print(error)
                         }
                         self.hasLoaded = false
                     }
