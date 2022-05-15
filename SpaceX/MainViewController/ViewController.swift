@@ -68,8 +68,10 @@ extension ViewController{
             vc.modalPresentationStyle = .popover
             vc.detailDescription = UITextView()
             self.present(vc, animated: true, completion: nil)
-            vc.detailDescription.text = "sarp"
+            guard var model = try? self.viewModel.data.value() else { return }
+            vc.detailDescription.text = model[indexPath.row].details == nil ? "Empty Descripton" : model[indexPath.row].details
         }).disposed(by: bag)
+
         
         
     }
