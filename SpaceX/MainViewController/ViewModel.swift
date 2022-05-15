@@ -18,6 +18,10 @@ class ViewModel{
     var isThereNewDataOnServer = true
     var hasLoaded = false
     
+    func updateCurserPosition(){
+        self.paginationCursor += Network.paginationLimit
+    }
+    
     func loadLaunches() {
         Network.shared.apollo
             .fetch(query: SpaceXHistoryQuery(offset: self.paginationCursor)) { [weak self] result in
@@ -54,10 +58,6 @@ class ViewModel{
                     debugPrint(error)
                 }
             }
-    }
-    
-    func updateCurserPosition(){
-        self.paginationCursor += Network.paginationLimit
     }
 }
 
