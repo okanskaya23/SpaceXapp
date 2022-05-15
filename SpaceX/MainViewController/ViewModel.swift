@@ -8,10 +8,14 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import RxDataSources
+
 
 
 class ViewModel{
     var data = [SpaceXHistoryQuery.Data.Launch]()
+    var dataRx = BehaviorSubject(value: [SectionModel(model: "", items: [SpaceXHistoryQuery.Data.Launch]())])
+
     var paginationCursor = 0
     var isThereNewDataOnServer = true
     var hasLoaded = false
@@ -33,6 +37,8 @@ class ViewModel{
                 case .success(let graphQLResult):
                     if let launchConnection = graphQLResult.data?.launches {
                         self.data.append(contentsOf: launchConnection.compactMap { $0 })
+                        let a = SectionModel(model: "Second", items: launchConnection.compactMap { $0 })
+                        self.dataRx.on(.next([a]))
                         if self.data.count < self.paginationCursor{
                             self.isThereNewDataOnServer = false
                         }
@@ -43,10 +49,12 @@ class ViewModel{
                         let message = errors
                             .map { $0.localizedDescription }
                             .joined(separator: "\n")
+                        print(message)
+                        
                     }
                     
                 case .failure(let error):
-                    print("error")
+                    print(error)
                 }
             }
     }
