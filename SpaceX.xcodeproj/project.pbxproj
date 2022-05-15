@@ -26,6 +26,7 @@
 		BE5D769D282FF19C00750A15 /* CustomRocketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE5D769B282FF19C00750A15 /* CustomRocketCell.xib */; };
 		BE5D76A428300A6100750A15 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D76A228300A6100750A15 /* DetailViewController.swift */; };
 		BE5D76A528300A6100750A15 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE5D76A328300A6100750A15 /* DetailViewController.xib */; };
+		BE5D76A72830F71000750A15 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D76A62830F71000750A15 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +68,7 @@
 		BE5D769B282FF19C00750A15 /* CustomRocketCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomRocketCell.xib; sourceTree = "<group>"; };
 		BE5D76A228300A6100750A15 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BE5D76A328300A6100750A15 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
+		BE5D76A62830F71000750A15 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				BE33E3A2282EDCA300768E1C /* ViewController.swift */,
+				BE5D76A62830F71000750A15 /* ViewModel.swift */,
 				BE33E3A4282EDCA300768E1C /* Main.storyboard */,
 			);
 			path = MainViewController;
@@ -366,6 +369,7 @@
 				BE33E3D9282EE26200768E1C /* API.swift in Sources */,
 				BE33E3A1282EDCA300768E1C /* SceneDelegate.swift in Sources */,
 				BE33E3DB282F946E00768E1C /* Network.swift in Sources */,
+				BE5D76A72830F71000750A15 /* ViewModel.swift in Sources */,
 				BE5D76A428300A6100750A15 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

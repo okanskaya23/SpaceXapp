@@ -12,68 +12,30 @@ import Apollo
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet var tableView: UITableView!
-    private var pagination = 0
-    
-    var data = [SpaceXHistoryQuery.Data.Launch]()
-    private var isThereNewDataOnServer = true
-    private var hasLoaded = false
+    private var viewModel = ViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(CustomRocketCell.nib(), forCellReuseIdentifier: CustomRocketCell.cellIdentifier)
         tableView.delegate = self
         tableView.dataSource = self
-        self.loadLaunches()
+        self.viewModel.loadLaunches(){
+            self.tableView.reloadData()
+        }
 
         
     }
-    private func loadLaunches() {
-        Network.shared.apollo
-            .fetch(query: SpaceXHistoryQuery(offset: self.pagination)) { [weak self] result in
-          
-          guard let self = self else {
-            return
-          }
-
-          defer {
-              self.tableView.reloadData()
-          }
-                  
-          switch result {
-          case .success(let graphQLResult):
-              if let launchConnection = graphQLResult.data?.launches {
-                self.data.append(contentsOf: launchConnection.compactMap { $0 })
-                  if self.data.count < self.pagination{
-                    self.isThereNewDataOnServer = false
-                }
-                  self.hasLoaded = false
-              }
-                      
-              if let errors = graphQLResult.errors {
-                let message = errors
-                      .map { $0.localizedDescription }
-                      .joined(separator: "\n")
-              }
-
-          case .failure(let error):
-              print("error")
-          }
-        }
-      }
-
-
-
 }
 extension ViewController{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return viewModel.data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: CustomRocketCell.cellIdentifier, for: indexPath) as! CustomRocketCell
         
-        let model = data[indexPath.row]
+        let model = viewModel.data[indexPath.row]
         cell.title.text = model.missionName
         
         return cell
@@ -85,18 +47,20 @@ extension ViewController{
         vc.modalPresentationStyle = .popover
         vc.detailDescription = UITextView()
         self.present(vc, animated: true, completion: nil)
-        vc.detailDescription.text = self.data[indexPath.row].details
+        vc.detailDescription.text = self.viewModel.data[indexPath.row].details
 
         
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pos = scrollView.contentOffset.y
-        if isThereNewDataOnServer && !hasLoaded{
+        if viewModel.isThereNewDataOnServer && !viewModel.hasLoaded{
              if pos > tableView.contentSize.height-50 - scrollView.frame.size.height{
-                 self.pagination += Network.paginationLimit
-                 self.loadLaunches()
+                 self.viewModel.pagination += Network.paginationLimit
+                 self.viewModel.loadLaunches(){
+                     self.tableView.reloadData()
+                 }
                  print("hey")
-                 hasLoaded = true
+                 viewModel.hasLoaded = true
                  
              }
         }
@@ -104,4 +68,3 @@ extension ViewController{
     }
 
 }
-
