@@ -10,9 +10,8 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-
-
 class ViewModel{
+    
     var data = BehaviorSubject(value: [SpaceXHistoryQuery.Data.Launch]())
 
     var paginationCursor = 0
@@ -27,10 +26,6 @@ class ViewModel{
                     return
                 }
                 
-                defer {
-                    //completion()
-                }
-                
                 switch result {
                 case .success(let graphQLResult):
                     if let launchConnection = graphQLResult.data?.launches {
@@ -42,7 +37,7 @@ class ViewModel{
                             }
 
                         } catch {
-                            print(error)
+                            debugPrint(error)
                         }
                         self.hasLoaded = false
                     }
@@ -51,12 +46,12 @@ class ViewModel{
                         let message = errors
                             .map { $0.localizedDescription }
                             .joined(separator: "\n")
-                        print(message)
+                        debugPrint(message)
                         
                     }
                     
                 case .failure(let error):
-                    print(error)
+                    debugPrint(error)
                 }
             }
     }

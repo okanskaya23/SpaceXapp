@@ -12,7 +12,6 @@ import RxCocoa
 import RxDataSources
 
 
-
 class ViewController: UIViewController ,UITableViewDelegate{
     
     private var viewModel = ViewModel()
@@ -28,14 +27,14 @@ class ViewController: UIViewController ,UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.addSubview(tableView)
-        bindTableView()
+        self.bindTableView()
         self.viewModel.loadLaunches()
         
         
     }
 }
 
-//MARK: pagination
+//MARK: Pagination Signal
 extension ViewController{
     //load new data in the end of the tableView
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -44,12 +43,14 @@ extension ViewController{
             if pos > tableView.contentSize.height-50 - scrollView.frame.size.height{
                 self.viewModel.updateCurserPosition()
                 self.viewModel.loadLaunches()
-                print("Pagination Request")
+                debugPrint("Pagination Request")
                 viewModel.hasLoaded = true
             }
         }
     }
 }
+
+//MARK: TableView binding
 extension ViewController{
     func bindTableView() {
         tableView.rx.setDelegate(self).disposed(by: bag)
@@ -68,7 +69,7 @@ extension ViewController{
             vc.modalPresentationStyle = .popover
             vc.detailDescription = UITextView()
             self.present(vc, animated: true, completion: nil)
-            guard var model = try? self.viewModel.data.value() else { return }
+            guard let model = try? self.viewModel.data.value() else { return }
             vc.detailDescription.text = model[indexPath.row].details == nil ? "Empty Descripton" : model[indexPath.row].details
         }).disposed(by: bag)
 
