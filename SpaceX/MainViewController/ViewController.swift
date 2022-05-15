@@ -16,6 +16,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     
     var data = [SpaceXHistoryQuery.Data.Launch]()
     private var isThereNewDataOnServer = true
+    private var hasLoaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +46,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                   if self.data.count < self.pagination{
                     self.isThereNewDataOnServer = false
                 }
+                  self.hasLoaded = false
               }
                       
               if let errors = graphQLResult.errors {
@@ -81,16 +83,20 @@ extension ViewController{
         tableView.deselectRow(at: indexPath, animated: true)
         let vc = DetailViewController()
         vc.modalPresentationStyle = .popover
+        vc.detailDescription = UITextView()
         self.present(vc, animated: true, completion: nil)
+        vc.detailDescription.text = self.data[indexPath.row].details
+
         
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pos = scrollView.contentOffset.y
-        if isThereNewDataOnServer{
+        if isThereNewDataOnServer && !hasLoaded{
              if pos > tableView.contentSize.height-50 - scrollView.frame.size.height{
                  self.pagination += Network.paginationLimit
                  self.loadLaunches()
                  print("hey")
+                 hasLoaded = true
                  
              }
         }
