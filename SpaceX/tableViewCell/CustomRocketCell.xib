@@ -16,16 +16,27 @@
                 <rect key="frame" x="0.0" y="0.0" width="370" height="98"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fg-Mx-uQ5">
-                        <rect key="frame" x="15" y="38.5" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fg-Mx-uQ5">
+                        <rect key="frame" x="15" y="26.5" width="350" height="45"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="0D6-2f-hB8"/>
+                        </constraints>
+                        <attributedString key="attributedText">
+                            <fragment content="Rocket Name">
+                                <attributes>
+                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <font key="NSFont" metaFont="system" size="17"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="1Fg-Mx-uQ5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="FsO-z8-GCK"/>
                     <constraint firstItem="1Fg-Mx-uQ5" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="mWl-so-yDt"/>
+                    <constraint firstAttribute="trailing" secondItem="1Fg-Mx-uQ5" secondAttribute="trailing" constant="5" id="zcJ-gC-akN"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
