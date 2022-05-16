@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailViewController" customModule="SpaceX" customModuleProvider="target">
             <connections>
                 <outlet property="detailDescription" destination="GxV-4G-wA0" id="O1H-ZC-DXX"/>
+                <outlet property="rocketImageView" destination="DFn-cH-hH8" id="zDp-Dh-0go"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,24 +20,33 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GxV-4G-wA0">
-                    <rect key="frame" x="0.0" y="44" width="414" height="279"/>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GxV-4G-wA0">
+                    <rect key="frame" x="0.0" y="285" width="414" height="279"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="279" id="VDc-hV-cXF"/>
+                        <constraint firstAttribute="height" constant="279" id="C7y-YF-wul"/>
                     </constraints>
-                    <mutableString key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                     <color key="textColor" systemColor="labelColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DFn-cH-hH8">
+                    <rect key="frame" x="0.0" y="44" width="414" height="221"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="DFn-cH-hH8" secondAttribute="height" multiplier="15:8" id="y8f-kB-leY"/>
+                    </constraints>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="GxV-4G-wA0" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="FUQ-7M-zwU"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GxV-4G-wA0" secondAttribute="trailing" id="Pyh-mI-cfz"/>
-                <constraint firstItem="GxV-4G-wA0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eiD-Rc-aUm"/>
+                <constraint firstItem="DFn-cH-hH8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2Dy-T7-GoU"/>
+                <constraint firstItem="GxV-4G-wA0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="JAO-s2-5Pz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="DFn-cH-hH8" secondAttribute="trailing" id="eFX-Be-cp1"/>
+                <constraint firstItem="GxV-4G-wA0" firstAttribute="top" secondItem="DFn-cH-hH8" secondAttribute="bottom" constant="20" id="gqi-H6-OWr"/>
+                <constraint firstItem="GxV-4G-wA0" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="sUR-Ap-Hty"/>
+                <constraint firstItem="DFn-cH-hH8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uco-K0-AcI"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="73.660714285714278"/>
         </view>
