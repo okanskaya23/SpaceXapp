@@ -11,6 +11,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailDescription: UITextView!
     @IBOutlet weak var rocketImageView: UIImageView!
+    @IBOutlet weak var launchYear: UILabel!
     private var viewModel:Launches!
     
     
@@ -31,5 +32,6 @@ class DetailViewController: UIViewController {
     func setData(){
         self.detailDescription.text = viewModel.details == nil ? "Detail not provided" : viewModel.details
         self.rocketImageView.load(url: URL(string: viewModel.links?.missionPatchSmall ?? "") ?? Network.defaultImageURL)
+        self.launchYear.text = viewModel.launchYear ?? "Null Date"
     }
 }
