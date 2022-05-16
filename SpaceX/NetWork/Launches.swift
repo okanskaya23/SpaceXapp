@@ -6,6 +6,9 @@
 //
 
 import Foundation
+
+public typealias Launches = SpaceXHistoryQuery.Data.Launch
+
 extension Launches: Equatable {
     public static func == (lhs: Launches, rhs: Launches) -> Bool {
         return lhs.id == rhs.id && lhs.missionName == rhs.missionName && lhs.links?.missionPatchSmall == rhs.links?.missionPatchSmall
