@@ -15,4 +15,5 @@ class Network {
     static let shared = Network()
     private(set) lazy var apollo = ApolloClient(url: URL(string: "https://api.spacex.land/graphql/")!)
     static let paginationLimit = 20
+    static let defaultImageURL = URL(string: "https://i.ibb.co/N76Tmvs/Elon-Musk-Space-X.jpg")!
 }

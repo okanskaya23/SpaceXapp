@@ -10,12 +10,14 @@ import UIKit
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var detailDescription: UITextView!
-    var viewModel:Launches!
+    @IBOutlet weak var rocketImageView: UIImageView!
+    @IBOutlet weak var launchYear: UILabel!
+    private var viewModel:Launches!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.detailDescription.text = viewModel.details == nil ? "Detail not provided" : viewModel.details
+        self.setData()
     }
     
     init(viewModel: Launches){
@@ -27,5 +29,9 @@ class DetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-
+    func setData(){
+        self.detailDescription.text = viewModel.details == nil ? "Detail not provided" : viewModel.details
+        self.rocketImageView.load(url: URL(string: viewModel.links?.missionPatchSmall ?? "") ?? Network.defaultImageURL)
+        self.launchYear.text = viewModel.launchYear ?? "Null Date"
+    }
 }

@@ -63,12 +63,12 @@ extension ViewController{
     //load new data in the end of the tableView
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let pos = scrollView.contentOffset.y
-        if viewModel.isThereNewDataOnServer && !viewModel.hasLoaded{
+        if viewModel.canLoadMore(){
             if pos > tableView.contentSize.height-50 - scrollView.frame.size.height{
                 self.viewModel.updateCurserPosition()
                 self.viewModel.loadLaunches()
                 debugPrint("Pagination Request")
-                viewModel.hasLoaded = true
+                viewModel.toggeleHasLoaded()
             }
         }
     }

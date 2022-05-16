@@ -15,12 +15,20 @@ class ViewModel{
     
     var data = BehaviorSubject(value: [Launches]())
 
-    var paginationCursor = 0
-    var isThereNewDataOnServer = true
-    var hasLoaded = false
+    private var paginationCursor = 0
+    private var isThereNewDataOnServer = true
+    private var hasLoaded = false
     
     func updateCurserPosition(){
         self.paginationCursor += Network.paginationLimit
+    }
+    
+    func canLoadMore() -> Bool{
+        return self.isThereNewDataOnServer && !self.hasLoaded
+    }
+    
+    func toggeleHasLoaded(){
+        self.hasLoaded.toggle()
     }
     
     func loadLaunches() {
