@@ -3,7 +3,7 @@ query SpaceXHistory($offset: Int) {
     mission_name
     launch_year
     links {
-      mission_patch
+      mission_patch_small
     }
     details
   }

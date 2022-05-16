@@ -15,7 +15,7 @@ public final class SpaceXHistoryQuery: GraphQLQuery {
         launch_year
         links {
           __typename
-          mission_patch
+          mission_patch_small
         }
         details
       }
@@ -136,7 +136,7 @@ public final class SpaceXHistoryQuery: GraphQLQuery {
         public static var selections: [GraphQLSelection] {
           return [
             GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-            GraphQLField("mission_patch", type: .scalar(String.self)),
+            GraphQLField("mission_patch_small", type: .scalar(String.self)),
           ]
         }
 
@@ -146,8 +146,8 @@ public final class SpaceXHistoryQuery: GraphQLQuery {
           self.resultMap = unsafeResultMap
         }
 
-        public init(missionPatch: String? = nil) {
-          self.init(unsafeResultMap: ["__typename": "LaunchLinks", "mission_patch": missionPatch])
+        public init(missionPatchSmall: String? = nil) {
+          self.init(unsafeResultMap: ["__typename": "LaunchLinks", "mission_patch_small": missionPatchSmall])
         }
 
         public var __typename: String {
@@ -159,12 +159,12 @@ public final class SpaceXHistoryQuery: GraphQLQuery {
           }
         }
 
-        public var missionPatch: String? {
+        public var missionPatchSmall: String? {
           get {
-            return resultMap["mission_patch"] as? String
+            return resultMap["mission_patch_small"] as? String
           }
           set {
-            resultMap.updateValue(newValue, forKey: "mission_patch")
+            resultMap.updateValue(newValue, forKey: "mission_patch_small")
           }
         }
       }

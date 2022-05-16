@@ -30,6 +30,6 @@ class DetailViewController: UIViewController {
     
     func setData(){
         self.detailDescription.text = viewModel.details == nil ? "Detail not provided" : viewModel.details
-        self.rocketImageView.load(url: URL(string: viewModel.links?.missionPatch ?? "") ?? Network.defaultImageURL)
+        self.rocketImageView.load(url: URL(string: viewModel.links?.missionPatchSmall ?? "") ?? Network.defaultImageURL)
     }
 }
