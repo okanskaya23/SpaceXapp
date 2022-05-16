@@ -36,7 +36,7 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="19W-P0-vVj">
-                    <rect key="frame" x="5" y="309" width="172" height="20.5"/>
+                    <rect key="frame" x="10" y="309" width="172" height="20.5"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Launch Year:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VjN-OJ-0GL">
                             <rect key="frame" x="0.0" y="0.0" width="98.5" height="20.5"/>
@@ -60,7 +60,7 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="DFn-cH-hH8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="2Dy-T7-GoU"/>
-                <constraint firstItem="19W-P0-vVj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="GNE-yh-f3n"/>
+                <constraint firstItem="19W-P0-vVj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="10" id="GNE-yh-f3n"/>
                 <constraint firstItem="GxV-4G-wA0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="JAO-s2-5Pz"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GxV-4G-wA0" secondAttribute="bottom" id="SQE-PX-GTz"/>
                 <constraint firstItem="19W-P0-vVj" firstAttribute="top" secondItem="DFn-cH-hH8" secondAttribute="bottom" constant="44" id="Y1m-KT-GtC"/>
