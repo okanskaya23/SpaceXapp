@@ -23,6 +23,7 @@
 		BE33E3D7282EE1A200768E1C /* GraphQLViewController.graphql in Resources */ = {isa = PBXBuildFile; fileRef = BE33E3D6282EE1A200768E1C /* GraphQLViewController.graphql */; };
 		BE33E3D9282EE26200768E1C /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE33E3D8282EE26200768E1C /* API.swift */; };
 		BE33E3DB282F946E00768E1C /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE33E3DA282F946E00768E1C /* Network.swift */; };
+		BE3F906A28326D2D000F344B /* graphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE3F906928326D2D000F344B /* graphQL.swift */; };
 		BE5D769C282FF19C00750A15 /* CustomRocketCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D769A282FF19C00750A15 /* CustomRocketCell.swift */; };
 		BE5D769D282FF19C00750A15 /* CustomRocketCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE5D769B282FF19C00750A15 /* CustomRocketCell.xib */; };
 		BE5D76A428300A6100750A15 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D76A228300A6100750A15 /* DetailViewController.swift */; };
@@ -76,6 +77,7 @@
 		BE33E3D6282EE1A200768E1C /* GraphQLViewController.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GraphQLViewController.graphql; sourceTree = "<group>"; };
 		BE33E3D8282EE26200768E1C /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BE33E3DA282F946E00768E1C /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		BE3F906928326D2D000F344B /* graphQL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = graphQL.swift; sourceTree = "<group>"; };
 		BE5D769A282FF19C00750A15 /* CustomRocketCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRocketCell.swift; sourceTree = "<group>"; };
 		BE5D769B282FF19C00750A15 /* CustomRocketCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomRocketCell.xib; sourceTree = "<group>"; };
 		BE5D76A228300A6100750A15 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
@@ -222,6 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				BE67AA572832258B007F6370 /* ImageViewExtansion.swift */,
+				BE3F906928326D2D000F344B /* graphQL.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -519,6 +522,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE5D769C282FF19C00750A15 /* CustomRocketCell.swift in Sources */,
+				BE3F906A28326D2D000F344B /* graphQL.swift in Sources */,
 				BE33E3A3282EDCA300768E1C /* ViewController.swift in Sources */,
 				BE33E39F282EDCA300768E1C /* AppDelegate.swift in Sources */,
 				BE33E3D9282EE26200768E1C /* API.swift in Sources */,

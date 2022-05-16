@@ -6,6 +6,7 @@ query SpaceXHistory($offset: Int) {
       mission_patch_small
     }
     details
+    id
   }
 }
 

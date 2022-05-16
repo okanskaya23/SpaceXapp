@@ -18,6 +18,7 @@ public final class SpaceXHistoryQuery: GraphQLQuery {
           mission_patch_small
         }
         details
+        id
       }
     }
     """
@@ -72,6 +73,7 @@ public final class SpaceXHistoryQuery: GraphQLQuery {
           GraphQLField("launch_year", type: .scalar(String.self)),
           GraphQLField("links", type: .object(Link.selections)),
           GraphQLField("details", type: .scalar(String.self)),
+          GraphQLField("id", type: .scalar(GraphQLID.self)),
         ]
       }
 
@@ -81,8 +83,8 @@ public final class SpaceXHistoryQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(missionName: String? = nil, launchYear: String? = nil, links: Link? = nil, details: String? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Launch", "mission_name": missionName, "launch_year": launchYear, "links": links.flatMap { (value: Link) -> ResultMap in value.resultMap }, "details": details])
+      public init(missionName: String? = nil, launchYear: String? = nil, links: Link? = nil, details: String? = nil, id: GraphQLID? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Launch", "mission_name": missionName, "launch_year": launchYear, "links": links.flatMap { (value: Link) -> ResultMap in value.resultMap }, "details": details, "id": id])
       }
 
       public var __typename: String {
@@ -127,6 +129,15 @@ public final class SpaceXHistoryQuery: GraphQLQuery {
         }
         set {
           resultMap.updateValue(newValue, forKey: "details")
+        }
+      }
+
+      public var id: GraphQLID? {
+        get {
+          return resultMap["id"] as? GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
         }
       }
 

@@ -8,27 +8,21 @@
 import Foundation
 import RxSwift
 import RxCocoa
-import RxDataSources
 
 
 class ViewModel{
-    
-    var data = BehaviorSubject(value: [Launches]())
-
+        
     private var paginationCursor = 0
-    private var isThereNewDataOnServer = true
-    private var hasLoaded = false
+    private var isThereNewDataOnServer:BehaviorSubject<Bool> = BehaviorSubject(value: true)
+    var hasLoaded:BehaviorSubject<Bool> = BehaviorSubject(value: true)
+    var data = [Launches]()
+
+    var canLoadMore:Observable<Bool> {
+        return Observable.combineLatest(hasLoaded, isThereNewDataOnServer).map({ $0 && $1 })
+    }
     
     func updateCurserPosition(){
         self.paginationCursor += Network.paginationLimit
-    }
-    
-    func canLoadMore() -> Bool{
-        return self.isThereNewDataOnServer && !self.hasLoaded
-    }
-    
-    func toggeleHasLoaded(){
-        self.hasLoaded.toggle()
     }
     
     func loadLaunches() {
@@ -42,17 +36,14 @@ class ViewModel{
                 switch result {
                 case .success(let graphQLResult):
                     if let launchConnection = graphQLResult.data?.launches {
-                        do {
-                            try self.data.onNext(self.data.value() + launchConnection.compactMap { $0 })
-                            let count = try self.data.value().count
-                            if count < self.paginationCursor{
-                                self.isThereNewDataOnServer = false
-                            }
-
-                        } catch {
-                            debugPrint(error)
+                        
+                        self.data.append(contentsOf: launchConnection.compactMap { $0 })
+                        let count = self.data.count
+                        if count < self.paginationCursor{
+                            self.isThereNewDataOnServer.onNext(false)
                         }
-                        self.hasLoaded = false
+                        
+                        self.hasLoaded.onNext(true)
                     }
                     
                     if let errors = graphQLResult.errors {
