@@ -38,6 +38,7 @@ class ViewModel{
                     if let launchConnection = graphQLResult.data?.launches {
                         
                         self.data.append(contentsOf: launchConnection.compactMap { $0 })
+                        
                         let count = self.data.count
                         if count < self.paginationCursor{
                             self.isThereNewDataOnServer.onNext(false)
@@ -45,13 +46,11 @@ class ViewModel{
                         
                         self.hasLoaded.onNext(true)
                     }
-                    
                     if let errors = graphQLResult.errors {
                         let message = errors
                             .map { $0.localizedDescription }
                             .joined(separator: "\n")
                         debugPrint(message)
-                        
                     }
                     
                 case .failure(let error):

@@ -27,7 +27,7 @@
 		BE5D76A428300A6100750A15 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D76A228300A6100750A15 /* DetailViewController.swift */; };
 		BE5D76A528300A6100750A15 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE5D76A328300A6100750A15 /* DetailViewController.xib */; };
 		BE5D76A72830F71000750A15 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5D76A62830F71000750A15 /* ViewModel.swift */; };
-		BE67AA582832258B007F6370 /* ImageViewExtansion.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67AA572832258B007F6370 /* ImageViewExtansion.swift */; };
+		BE67AA582832258B007F6370 /* ImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE67AA572832258B007F6370 /* ImageViewExtension.swift */; };
 		DEEB4CA45BA68BBBEDD49709 /* Pods_SpaceX_SpaceXUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19425500ECFB70C79FE248CB /* Pods_SpaceX_SpaceXUITests.framework */; };
 		F4EFA7480B1406B132B92167 /* Pods_SpaceX.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 639BC2997DFE27A45A1CC0AE /* Pods_SpaceX.framework */; };
 /* End PBXBuildFile section */
@@ -79,7 +79,7 @@
 		BE5D76A228300A6100750A15 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BE5D76A328300A6100750A15 /* DetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		BE5D76A62830F71000750A15 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		BE67AA572832258B007F6370 /* ImageViewExtansion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtansion.swift; sourceTree = "<group>"; };
+		BE67AA572832258B007F6370 /* ImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtension.swift; sourceTree = "<group>"; };
 		CA4AC9FE39652B0AB164BA33 /* Pods-SpaceX.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SpaceX.debug.xcconfig"; path = "Target Support Files/Pods-SpaceX/Pods-SpaceX.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -210,7 +210,7 @@
 		BE67AA5628322574007F6370 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				BE67AA572832258B007F6370 /* ImageViewExtansion.swift */,
+				BE67AA572832258B007F6370 /* ImageViewExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -512,7 +512,7 @@
 				BE33E3D9282EE26200768E1C /* API.swift in Sources */,
 				BE33E3A1282EDCA300768E1C /* SceneDelegate.swift in Sources */,
 				BE33E3DB282F946E00768E1C /* Network.swift in Sources */,
-				BE67AA582832258B007F6370 /* ImageViewExtansion.swift in Sources */,
+				BE67AA582832258B007F6370 /* ImageViewExtension.swift in Sources */,
 				BE5D76A72830F71000750A15 /* ViewModel.swift in Sources */,
 				BE5D76A428300A6100750A15 /* DetailViewController.swift in Sources */,
 			);

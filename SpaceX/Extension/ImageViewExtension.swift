@@ -1,5 +1,5 @@
 //
-//  ImageViewExtansion.swift
+//  ImageViewExtension.swift
 //  SpaceX
 //
 //  Created by Okan Sarp Kaya on 16.05.2022.
