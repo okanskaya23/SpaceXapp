@@ -18,7 +18,7 @@ class ViewController: UIViewController ,UITableViewDelegate{
     private var bag = DisposeBag()
     var load: Bool!
 
-    lazy var tableView : UITableView = {
+    private lazy var tableView : UITableView = {
         let tv = UITableView(frame: self.view.frame, style: .insetGrouped)
         tv.translatesAutoresizingMaskIntoConstraints = false
         tv.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
@@ -42,7 +42,7 @@ class ViewController: UIViewController ,UITableViewDelegate{
 
 //MARK: TableView
 extension ViewController{
-    func configureDataSource() {
+    private func configureDataSource() {
         tableView.delegate = self
         dataSource = UITableViewDiffableDataSource<ViewController.Section, Launches>(tableView: tableView, cellProvider: { (tableView, indexPath, value) -> UITableViewCell? in
           let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
@@ -62,13 +62,13 @@ extension ViewController{
     }
 }
 extension ViewController{
-    func setObservers(){
+    private func setObservers(){
         viewModel.canLoadMore.subscribe( onNext: { [weak self] canLoadMore in
             self?.load = canLoadMore
             var snapshot = NSDiffableDataSourceSnapshot<ViewController.Section, Launches>()
             snapshot.appendSections([.main])
             snapshot.appendItems(self!.viewModel.data)
-            self!.dataSource.apply(snapshot, animatingDifferences: false)
+            self?.dataSource.apply(snapshot, animatingDifferences: false)
             
         }).disposed(by: bag)
     }

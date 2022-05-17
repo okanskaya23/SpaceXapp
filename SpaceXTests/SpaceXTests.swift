@@ -10,10 +10,6 @@ import XCTest
 
 class SpaceXTests: XCTestCase {
     
-    func appCanLoadDataInFirstLaunch(){
-        XCTAssertTrue(ViewModel().canLoadMore())
-    }
-    
     func placeHolderImageCheck(){
         XCTAssertNotNil(Network.defaultImageURL)
     }
@@ -21,5 +17,4 @@ class SpaceXTests: XCTestCase {
     func checkPaginationLimit(){
         XCTAssertNotNil(Network.paginationLimit)
     }
-
 }
